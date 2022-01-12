@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="container">
+    {% if projects%}
+    <h3 class="text-center" >{{projects | length}} project(s) found for {{message}}</h3>
+   {% for project in projects%}
+    <div class="card" style="width:500px; display:flex; margin: 0 auto; padding:10px;">
+        <img class="card-img-top" style="width: 480px; height:300px; object-fit: cover;" src="{{project.image.url}}" alt="">
+        <div class="card-body">
+            <h4 class="card-title">{{project.title}} : {{project.average_score|floatformat:2}}/10</h4>
+            <a class="text-center" style="color: goldenrod;" href="{% url 'project_details' project.id %}"> View
+                Details</a>
+        </div>
+    </div>
+   {% endfor%}
+   {% else%}
+   <h3 class="text-center" >There is no project with that title</h3>
+   {% endif %}
+
+   <footer id="footer">RATER 2021</footer>
+</div>
+
+{% endblock%}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg sticky-top navbar-dark " style="background-color:black; color: white;">
+    <a class=" navbar-brand" style="font-family: 'Fredericka the Great', cursive;color:rgb(218, 91, 32); font-size: 40px; font-weight: bold; padding-left: 120px;" href="{% url 'index' %}">RATER</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+      aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <div class="mx-auto col-sm-4 col-md-4>">
+        <form class="navbar-form" role="search" , action="{% url 'project_search' %}">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search project" name="project">
+            
+          </div>
+        </form>
+      </div>
+      <ul id="navbar-list" class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'index' %}">Home <span
+              class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'post_project' %}">Post Project</a>
+        </li>
+        {% if user.is_authenticated %}
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            {{user}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{% url 'profile' %}"> Profile</a>
+            <a class="dropdown-item" href="/api/projects/"> Projects API</a>
+            <a class="dropdown-item" href="/api/profiles/"> Profile API</a>
+            <a class="dropdown-item" href="/admin"> Admin</a>
+            <a class="dropdown-item" href="/accounts/logout/">Logout</a>
+
+          </div>
+        </li>
+        {%else%}
+        <li class="nav-item active">
+          <a class="nav-link" href="/accounts/login/">Login</a>
+        </li>
+      
+
+        {% endif %}
+
+
+
+  </nav>
+</body>
+
+</html>

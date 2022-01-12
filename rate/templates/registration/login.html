@@ -1,0 +1,41 @@
+{%extends "registration/base.html"%} 
+{% load bootstrap4 %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <!-- Empty div -->
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      {% if form.errors %}
+        <p> Some Information Might be Incorrect </p>
+      {% endif %}
+      <br><br>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1 style="color: goldenrod;" class="text-center"> Login </h1>
+        </div>
+        <div class="panel-body">
+
+          <form  action="/accounts/login/" method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <div class="form-group">
+              <input type="submit" class="btn btn-dark" value="Sign In">
+              <p>Don't have an account with us? <a style="color: goldenrod;" href="/accounts/register/">Register here</a></p>
+            </div>
+
+            <input type="hidden" name="next" value="{{next}}">
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+    <!-- empty div -->
+    <div class="col-md-4"></div>
+  </div>
+</div>
+
+{% endblock %} 

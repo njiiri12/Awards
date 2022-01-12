@@ -1,0 +1,64 @@
+.grid-item { width: 400px; }
+
+#nits {
+    padding-left: 140px;
+}
+
+body {
+    background-color: #e76f51;
+    color: rgb(29, 28, 28);
+    font-family: 'Balsamiq Sans', cursive;
+}
+
+#highest {
+    border-radius: 5px;
+}
+
+.card{
+    background-color: black;
+    border:1px solid white;
+}
+
+
+
+#project-details h1{
+    font-family: 'Balsamiq Sans', cursive;
+    font-size: 60px;
+    color: goldenrod;
+}
+
+#project-details img{
+    width: 500px;
+    height: 480px;
+    object-fit: cover;
+}
+
+#project-details h3{
+    color: goldenrod;
+}
+
+#project-details p{
+    font-size: 20px;
+}
+
+#highest{
+    background-color: white;
+    color: black;
+    padding:50px;
+    margin-right: 200px;
+    margin-left: 80px;  
+}
+
+#header{
+    margin-left: 100px;
+}
+
+#footer{
+    color: goldenrod;
+    font-family: 'Fredericka the Great', cursive;
+    font-style: italic;
+    text-align: center;
+    padding: 50px;
+    font-weight: bold;
+    font-size: 25px;
+}

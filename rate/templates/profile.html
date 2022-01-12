@@ -1,0 +1,68 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="container-fluid" id="nits">
+    <br>
+    <div class="row">
+        <div class="col-md-3">
+            {% if profile.picture%}
+            <img style="width:200px; height:200px;object-fit: cover;border-radius: 50%;" src="{{profile.picture.url}}"
+                alt="">
+            {% else %}
+            <img style="width:200px; height:200px;object-fit: cover;border-radius: 50%;" src="/media/images/avartar.png"
+                alt="">
+            {% endif%}
+        </div>
+        <div class="col-md-9">
+            <h1 style="color: goldenrod;">{{profile.user}}</h1>
+            {% if profile.bio%}
+            <p>About : {{profile.bio}}</p>
+            {%else%}
+            <p>About : I am an RATER user</p>
+            {%endif%}
+            {% if profile.email%}
+            <p>Email: {{profile.email}}</p>
+            {%else%}
+            <p>Email : Edit profile to add email</p>
+            {%endif%}
+            {% if profile.github_link%}
+            <p>Github : <a href="{{profile.github_link}}">{{profile.github_link}}</a></p>
+            {%else%}
+            <p>Github : Edit profile to add github account</p>
+            {%endif%}
+
+            <a style="color: goldenrod;" href="{% url 'edit_profile' %}"> Edit Profile</a>
+        </div>
+    </div>
+
+    <hr>
+    <h1>Projects</h1>
+
+
+    <div class="grid flex">
+        {%if projects%}
+        {% for project in projects %}
+        <div class="card grid-item">
+            <img class="card-img-top" src="{{project.image.url}}" alt="">
+            <div class="card-body">
+                <h4 class="card-title">{{project.title}}: {{project.average_score|floatformat:2}}/10</h4>
+
+                <!-- <p class="card-text">Design: {{project.average_design | floatformat:2}}</p>
+                
+                    <p class="card-text">Usability: {{project.average_usability | floatformat:2}}</p>
+               
+                    <p class="card-text">Content: {{project.average_content | floatformat:2}}</p>
+                -->
+
+                <a class="text-center" style="color: goldenrod;" href="{% url 'project_details' project.id %}"> View
+                    Details</a>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>You have not posted projects yet </p>
+        {% endif %}
+        
+    </div>
+    <footer id="footer">RATER 2021</footer>
+</div>
+{% endblock%}

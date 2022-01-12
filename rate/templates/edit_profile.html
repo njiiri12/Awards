@@ -1,0 +1,42 @@
+{% load bootstrap4 %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Edit Bio</title>
+    {{form.media}}
+
+    {% block styles %}
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Fredericka+the+Great&display=swap" rel="stylesheet"> -->
+    {% endblock %}
+
+</head>
+
+<body>
+    {% include "navbar.html"%}
+    <div class="container">
+
+        <h1 class="text-center" style="padding-top:50px; color: rgb(187, 75, 56);">Update your profile </h1>
+
+        <form action="{%url 'edit_profile'%}" method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+
+            {% bootstrap_form form%}
+            <input type="submit" class="btn btn-dark" value="Update">
+        </form>
+
+        {% block scripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        {% bootstrap_javascript %}
+        {% endblock %}
+    </div>
+    <footer id="footer">RATER 2021</footer>
+</body>
+
+</html>
